@@ -1,0 +1,46 @@
+
+title: "Ziwei's blog"
+description: "I blog about ideas about programming and learning"
+keywords: "minimalist, learning, cognition, programming, development "
+url:  # site url
+baseurl: null  # apply repo name if use it under gh-pages branch
+# baseurl: null # apply null if repo name is something like username.github.io
+
+repo: http://github.com/ziweiwu/ziweiwu.github.io
+disqus_shortname: "ziwei"
+comments: true
+
+# Build settings
+permalink   : /:year/:title/
+markdown    : kramdown
+highlighter : rouge
+
+source: ./
+destination: ./_site
+
+# Sass configuration
+sass:
+  sass_dir: assets/scss
+  style: compressed # expanded
+
+# Author settings
+  author   : " ziwei wu"
+  name     : "ziwei wu"
+  email    : ziweiwu@gmail.com
+  github   : http://github.coma/ziweiwu
+
+# social settings
+og_locale: "en_US"
+
+gems:
+  - bourbon
+  - jekyll-paginate
+
+# navbar pages
+navbar:
+  - slug : about
+    title: About
+  - slug : blog
+    title: Blog
+
+exclude: ["gulp", "node_modules", "bower", "bower_components", "config.rb", "src", "Gemfile", "Gemfile.lock", ".rvmrc", ".rbenv-version", "package.json", "gulpfile.js", "README.md", "Rakefile", "changelog.md"]
