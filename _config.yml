@@ -2,12 +2,12 @@
 title: "Ziwei's blog"
 description: "I blog about ideas about programming and learning"
 keywords: "minimalist, learning, cognition, programming, development "
-url:  # site url
+url: https://ziweiwu.github.io 
 baseurl: null  # apply repo name if use it under gh-pages branch
 # baseurl: null # apply null if repo name is something like username.github.io
 
 repo: http://github.com/ziweiwu/ziweiwu.github.io
-disqus_shortname: "ziwei"
+disqus_shortname: "my-page"
 comments: true
 
 # Build settings
