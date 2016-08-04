@@ -9,4 +9,4 @@ Over the weekend, I went to a hiking trail near Hogg's Fall. It was quite beauti
 
 ![](http://pic.yupoo.com/ziweiwu/FKpfeuEn/pyNTU.jpg)
 
-Nature has the power to immerse you.
+Nature has the power to immerse you. 大自然有神奇的力量！
