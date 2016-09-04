@@ -2,7 +2,7 @@
 layout: post
 title: "My first blog"
 description: "my first blog"
-comments: true
+comments: false 
 keywords: "first blog, my, hello, world"
 ---
 This is my first blog created by using Jekyll. I will start posting interesting

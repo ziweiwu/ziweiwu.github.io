@@ -1,6 +1,6 @@
 ---
 layout: post
-comments: true
+comments: false 
 title: "Hiking at Mono's cliff"
 description: "longest hike ever"
 keywords: "Hiking, Ontario, Orangeville"

@@ -1,6 +1,6 @@
 ---
 layout: post
-comments: true
+comments: false 
 title: "My next study goal: SICP!"
 description: "structure and intepretation of computer program"
 keywords: "sicp, computer science, programming, learning"

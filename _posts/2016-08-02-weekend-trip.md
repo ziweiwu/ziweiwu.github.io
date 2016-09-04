@@ -1,6 +1,6 @@
 ---
 layout: post
-comments: true
+comments: false 
 title: "Weekend hiking near Hogg's Fall"
 description: "some eye candy"
 keywords: "trip, travel, nature, thoughts, Ontario, Canada"
