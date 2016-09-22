@@ -1,4 +1,4 @@
-----
+---
 layout: post
 title: "Doing things right vs. Doing the right thing"
 description: "the dilema"
