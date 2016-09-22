@@ -2,7 +2,7 @@
 layout: post
 title: "Doing things right vs. Doing the right thing"
 description: "the dilema"
-comments: true 
+comments: false 
 keywords: "dilema, efficiency, effectiveness, choices, effort"
 ---
 I come across this idea of doing the things right vs doing the right thing. 
