@@ -8,7 +8,7 @@ keywords: "dilema, efficiency, effectiveness, choices, effort"
 I come across this idea of doing the things right vs doing the right thing. 
 
 This dilema is interesting because I realize a lot of times, we are in this autopilot mode of not thinking about how we can do things better. 
-BUT even more so, we are not thinking about whether what we are doing at the time is the right time to do. Whether the effort is worth our time and ability.
+BUT even more so, we are not thinking about whether what we are doing at the time is the right thing to do. Whether the effort is worth our time and ability.
 
 One example in my personal experience is my goal for becoming medical professional vs. studying computer science and programming.
 
