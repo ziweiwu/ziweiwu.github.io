@@ -1,5 +1,7 @@
+---
 layout: post
 title: "My Learning Plan from now to end of Janaury 2017"
+description: ""
 comments: false 
 keywords: "learning, plan"
 ---

@@ -11,4 +11,4 @@ I keep hearing good things about it. This is considered by many, a great introdu
 
 I plan to go over this book over the next few weeks. Hopeful I can get some good insights. 
 
-Very excited!
+very excited!
