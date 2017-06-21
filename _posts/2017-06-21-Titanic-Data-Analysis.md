@@ -318,7 +318,7 @@ plt.xlabel('$ Fare Price')
 
 
 
-![png](output_9_1.png)
+![png](/screenshot/output_9_1.png)
 
 
 As seen from the graph, majority of the fare price is below $35, the graph shows a postive skewed shape. I want to group the data by <$35 and >$35, then look at the survival rate. 
@@ -505,7 +505,7 @@ plt.xlabel('Fare Price')
 
 
 
-![png](output_14_1.png)
+![png](/screenshot/output_14_1.png)
 
 
 The bar graph demostrates that higher fare price is associated with significantly higher survival rate compared to lower fare price.
@@ -564,7 +564,7 @@ plt.xlabel('Gender')
 
 
 
-![png](output_19_1.png)
+![png](/screenshot/output_19_1.png)
 
 
 Being a female is associated with much higher survival rate compared to male. This result is not surprising as female was more likely being helped first when the disaster occured. 
@@ -625,7 +625,7 @@ plt.xlabel('Age')
 
 
 
-![png](output_25_1.png)
+![png](/screenshot/output_25_1.png)
 
 
 The age distribution shows that the majority of passengers are fairly young, from around late teens to mid 30s. A surprising finding is that there are fairly a bit of infants onboard as shown the small peak at the very left of graph, otherwise the graph is pretty bell-shaped. 
@@ -832,7 +832,7 @@ plt.xlabel('Age Group')
 
 
 
-![png](output_29_1.png)
+![png](/screenshot/output_29_1.png)
 
 
 - Age Group 1: < 10
