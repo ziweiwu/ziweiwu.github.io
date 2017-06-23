@@ -31,10 +31,11 @@ sass:
 # social settings
 og_locale: "en_US"
 
+
 gems:
   - bourbon
   - jekyll-paginate
-
+  - jekyll-jupyter-notebook
 # navbar pages
 navbar:
   - slug : about
@@ -42,4 +43,4 @@ navbar:
   - slug : blog
     title: Blog
 
-exclude: ["gulp", "node_modules", "bower", "bower_components", "config.rb", "src", "Gemfile", "Gemfile.lock", ".rvmrc", ".rbenv-version", "package.json", "gulpfile.js", "README.md", "Rakefile", "changelog.md"]
+exclude: ["gulp", "node_modules","vendor", "bower", "bower_components", "config.rb", "src", "Gemfile", "Gemfile.lock", ".rvmrc", ".rbenv-version", "package.json", "gulpfile.js", "README.md", "Rakefile", "changelog.md"]

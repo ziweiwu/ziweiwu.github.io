@@ -10,4 +10,5 @@ group :development do
   gem 'bourbon', '~> 4.2', '>= 4.2.6'
   gem 'pygments.rb', '~> 0.6.3'
   gem 'github-pages', group: :jekyll_plugins
+  gem 'jekyll-jupyter-notebook'
 end
