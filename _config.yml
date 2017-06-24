@@ -1,4 +1,4 @@
-title: "Ziwei's blog"
+title: "My blog"
 description: "I blog about ideas about programming and learning"
 keywords: "minimalist, learning, cognition, programming, development "
 url: https://ziweiwu.github.io 
@@ -35,7 +35,6 @@ og_locale: "en_US"
 gems:
   - bourbon
   - jekyll-paginate
-  - jekyll-jupyter-notebook
 # navbar pages
 navbar:
   - slug : about
@@ -43,4 +42,4 @@ navbar:
   - slug : blog
     title: Blog
 
-exclude: ["gulp", "node_modules","vendor", "bower", "bower_components", "config.rb", "src", "Gemfile", "Gemfile.lock", ".rvmrc", ".rbenv-version", "package.json", "gulpfile.js", "README.md", "Rakefile", "changelog.md"]
+exclude: ["gulp", "node_modules","vendor",".ipynb", "bower", "bower_components", "config.rb", "src", "Gemfile", "Gemfile.lock", ".rvmrc", ".rbenv-version", "package.json", "gulpfile.js", "README.md", "Rakefile", "changelog.md"]
