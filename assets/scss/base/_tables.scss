@@ -1,21 +1,32 @@
 table {
-  border-collapse: collapse;
-  font-feature-settings: "kern", "liga", "tnum";
-  margin: $small-spacing 0;
-  table-layout: fixed;
-  width: 100%;
+    border-collapse: collapse;
+    font-feature-settings: "kern", "liga", "tnum";
+    margin: $small-spacing 0;
+    table-layout: auto;
+    width: 100%;
+
+    margin: 0;
+    font-size: rem(10);
+    color: $dark-gray-color;
+    //overflow-x: auto; //make table responsive automatically
+    //display: block; 
 }
+
+tr, th{
+  text-align: left;      
+  padding: $small-spacing 0;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2} //make the table rows alternative strips
+
 
 th {
   border-bottom: 1px solid shade($base-border-color, 25%);
   font-weight: 600;
-  padding: $small-spacing 0;
-  text-align: left;
 }
 
 td {
   border-bottom: $base-border;
-  padding: $small-spacing 0;
 }
 
 tr,

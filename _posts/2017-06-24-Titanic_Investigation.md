@@ -5,7 +5,8 @@ description: "Data Sciecne Project for Udacity DAND"
 comments: true 
 keywords: "Data Science, DAND"
 ---
-## Titanic Project 
+
+This project took my about three days to complete. It is the first big project for Udacity's Data Analysis nanodegree . I definitely learned a lot.
 
 For this project, I want to investigate the unfortunate tragedy of the sinking of the Titanic. The movie "Titanic"- which I watched when I was still a child left a strong memory for me. The event occurred in the early morning of 15 April 1912, when the ship collided with an iceberg, and out of 2,224 passengers, more than 1500 died. 
 ![Image of Titantic](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/RMS_Titanic_3.jpg/1024px-RMS_Titanic_3.jpg)
