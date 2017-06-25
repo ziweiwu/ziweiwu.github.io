@@ -1,13 +1,10 @@
 ---
 layout: post
-title: "Titanic Project"
-description: "Data Sciecne Project for Udacity DAND" 
+title: "Data Science Project - Titanic Project"
+description: "Data science project for the Udacity's DAND"
 comments: true 
-keywords: "Data Science, DAND"
+keywords: "data science, data analysis, python, pandas, seaborn"
 ---
-
-This project took my about three days to complete. It is the first big project for Udacity's Data Analysis nanodegree . I definitely learned a lot.
-
 For this project, I want to investigate the unfortunate tragedy of the sinking of the Titanic. The movie "Titanic"- which I watched when I was still a child left a strong memory for me. The event occurred in the early morning of 15 April 1912, when the ship collided with an iceberg, and out of 2,224 passengers, more than 1500 died. 
 ![Image of Titantic](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/RMS_Titanic_3.jpg/1024px-RMS_Titanic_3.jpg)
 
@@ -16,6 +13,7 @@ The dataset I am working with contains the demographic information, and other in
 ### Load the dataset
 ---
 First of all, I want to get an overview of the data and identify whether there is additional data cleaning/wrangling to be done before diving deeper. I start off by reading the CSV file into a Pandas Dataframe.  
+
 
 ```python
 #load the libraries that I might need to use
@@ -1158,6 +1156,250 @@ titanic_cleaned.head()
 
 
 
+Take a look at Survived and Pclass columns. They are not very descriptive, so I decided to add two additional columns called Survival and Class with more descriptive values. 
+
+
+```python
+# Create Survival Label Column
+titanic_cleaned['Survival'] = titanic_cleaned.Survived.map({0 : 'Died', 1 : 'Survived'})
+titanic_cleaned.head()
+```
+
+
+
+
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Fare</th>
+      <th>Embarked</th>
+      <th>Survival</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Braund, Mr. Owen Harris</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>7.2500</td>
+      <td>S</td>
+      <td>Died</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>71.2833</td>
+      <td>C</td>
+      <td>Survived</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Heikkinen, Miss. Laina</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7.9250</td>
+      <td>S</td>
+      <td>Survived</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>53.1000</td>
+      <td>S</td>
+      <td>Survived</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Allen, Mr. William Henry</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>8.0500</td>
+      <td>S</td>
+      <td>Died</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+# Create Class Label Column
+titanic_cleaned['Class'] = titanic_cleaned.Pclass.map({1 : 'Upper Class', 2 : 'Middle Class', 3 : 'Lower Class'})
+titanic_cleaned.head()
+```
+
+
+
+
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Fare</th>
+      <th>Embarked</th>
+      <th>Survival</th>
+      <th>Class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Braund, Mr. Owen Harris</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>7.2500</td>
+      <td>S</td>
+      <td>Died</td>
+      <td>Lower Class</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>71.2833</td>
+      <td>C</td>
+      <td>Survived</td>
+      <td>Upper Class</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Heikkinen, Miss. Laina</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7.9250</td>
+      <td>S</td>
+      <td>Survived</td>
+      <td>Lower Class</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>53.1000</td>
+      <td>S</td>
+      <td>Survived</td>
+      <td>Upper Class</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Allen, Mr. William Henry</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>8.0500</td>
+      <td>S</td>
+      <td>Died</td>
+      <td>Lower Class</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
 ### Data overview
 ---
 Now with a clean dataset, I am ready to formulate my hypothesis. I want to get a general overview of statistics for the dataset first. I use the describe() function on the data set. The useful statistic to look at is the mean, which gives us a general idea what the average value is for each feature. The standard deviation provides information on the spread of the data. The min and max give me information regarding whether there are outliers in the dataset. We should be careful and take these outliers into account when analyzing our data. I also calculate the median for each column in case there are outliers. 
@@ -1314,20 +1556,20 @@ Now let's study the distribution of variables of interest. The countplot() from 
 #I am using seaborn.countplot() to count and show the distribution of a single variable
 sns.set(style="darkgrid")
 
-ax = sns.countplot(x="Survived", data=titanic_cleaned)
-plt.title("Distribution of Survival, (1 = Survived)")
+ax = sns.countplot(x="Survival", data=titanic_cleaned)
+plt.title("Distribution of Survival")
 
 ```
 
 
 
 
-    <matplotlib.text.Text at 0x110e6f850>
+    <matplotlib.text.Text at 0x111291a90>
 
 
 
 
-![png](/images/Titanic_Investigation_files/Titanic_Investigation_13_1.png)
+![png](/images/Titanic_Investigation_files/Titanic_Investigation_16_1.png)
 
 
 We see that there were 342 passengers survived the disaster or around 38% of the sample.
@@ -1345,19 +1587,19 @@ ax1=sns.countplot(x="Sex", data=titanic_cleaned)
 plt.title("Distribution of Gender")
 
 fig.add_subplot(122)
-ax2 = sns.countplot(x="Pclass", data=titanic_cleaned)
-plt.title('Distributrion of Class (1.high 2.mid 3.low)')
+ax2 = sns.countplot(x="Class", data=titanic_cleaned)
+plt.title('Distributrion of Class')
 ```
 
 
 
 
-    <matplotlib.text.Text at 0x1143c6fd0>
+    <matplotlib.text.Text at 0x11474b3d0>
 
 
 
 
-![png](/images/Titanic_Investigation_files/Titanic_Investigation_15_1.png)
+![png](/images/Titanic_Investigation_files/Titanic_Investigation_18_1.png)
 
 
 It is now a good idea to combine the two graph to see how is gender and socioeconomic class intertwined. We see that among men, there is a much higher number of lower socioeconomic class individuals compared to women. For middle and upper class, the number of men and women are very similar. It is likely that families made up of the majority middle and upper-class passengers, while the lower class passengers are mostly single men.  
@@ -1367,19 +1609,19 @@ It is now a good idea to combine the two graph to see how is gender and socioeco
 
 ```python
 #By using hue argument, we can study the another variable, combine with our original variable
-sns.countplot(x='Sex', hue='Pclass', data=titanic_cleaned)
-plt.title('Gender and Socioeconomic class (1=high, 2=mid, 3=low)')
+sns.countplot(x='Sex', hue='Class', data=titanic_cleaned)
+plt.title('Gender and Socioeconomic class')
 ```
 
 
 
 
-    <matplotlib.text.Text at 0x114542a90>
+    <matplotlib.text.Text at 0x114818a50>
 
 
 
 
-![png](/images/Titanic_Investigation_files/Titanic_Investigation_17_1.png)
+![png](/images/Titanic_Investigation_files/Titanic_Investigation_20_1.png)
 
 
 Fare price is a continuous variable, and for this type of variable, we use seaborn.distplot() to study its frequency distribution. 
@@ -1397,21 +1639,24 @@ fig = plt.figure(figsize=(10,5))
 ax1 = fig.add_subplot(121)
 sns.distplot(titanic_cleaned.Fare)
 plt.title('Distribution of fare price')
+plt.ylabel('Density')
 
+#for this plot, kde must be explicitly turn off for the y axis to counts instead of frequency density
 axe2=fig.add_subplot(122)
-sns.countplot(titanic_cleaned.Age)
+sns.distplot(titanic_cleaned.Age,bins=40,hist=True, kde=False)
 plt.title('Distribution of age')
+plt.ylabel('Count')
 ```
 
 
 
 
-    <matplotlib.text.Text at 0x1147c04d0>
+    <matplotlib.text.Text at 0x114b22f10>
 
 
 
 
-![png](/images/Titanic_Investigation_files/Titanic_Investigation_19_1.png)
+![png](/images/Titanic_Investigation_files/Titanic_Investigation_22_1.png)
 
 
 We can see that the shape of two plots is quite different. 
@@ -1440,20 +1685,20 @@ Let's investigate fare price a bit deeper. First I am interested in looking at i
 
 ```python
 #multiple plots can be overlayed. Boxplot() and striplot() turned out to be a good combination
-sns.boxplot(x="Pclass", y="Fare", data=titanic_cleaned)
-sns.stripplot(x="Pclass", y="Fare", data=titanic_cleaned, color=".25")
+sns.boxplot(x="Class", y="Fare", data=titanic_cleaned)
+sns.stripplot(x="Class", y="Fare", data=titanic_cleaned, color=".25")
 plt.title('Class and fare price')
 ```
 
 
 
 
-    <matplotlib.text.Text at 0x114d21b90>
+    <matplotlib.text.Text at 0x114dfd450>
 
 
 
 
-![png](/images/Titanic_Investigation_files/Titanic_Investigation_24_1.png)
+![png](/images/Titanic_Investigation_files/Titanic_Investigation_27_1.png)
 
 
 This is not surprising that the outliers existed exclusively in the high socioeconomic class group, as only the wealthy individuals can afford the higher fare price. 
@@ -1470,7 +1715,7 @@ To look at the survival rate, I break down the fare data into two groups:
 #add a new column stating whether the fare >35 (value=1) or <=35 dollars (value=0)
 
 titanic_fare = titanic_cleaned.copy()
-titanic_fare['Fare>35'] = np.where(titanic_cleaned['Fare']>35,1,0)
+titanic_fare['Fare>35'] = np.where(titanic_cleaned['Fare']>35,'Yes','No')
 
 #check to see if the column creation is succesful
 titanic_fare.head()
@@ -1508,6 +1753,8 @@ titanic_fare.head()
       <th>Parch</th>
       <th>Fare</th>
       <th>Embarked</th>
+      <th>Survival</th>
+      <th>Class</th>
       <th>Fare&gt;35</th>
     </tr>
   </thead>
@@ -1524,7 +1771,9 @@ titanic_fare.head()
       <td>0</td>
       <td>7.2500</td>
       <td>S</td>
-      <td>0</td>
+      <td>Died</td>
+      <td>Lower Class</td>
+      <td>No</td>
     </tr>
     <tr>
       <th>1</th>
@@ -1538,7 +1787,9 @@ titanic_fare.head()
       <td>0</td>
       <td>71.2833</td>
       <td>C</td>
-      <td>1</td>
+      <td>Survived</td>
+      <td>Upper Class</td>
+      <td>Yes</td>
     </tr>
     <tr>
       <th>2</th>
@@ -1552,7 +1803,9 @@ titanic_fare.head()
       <td>0</td>
       <td>7.9250</td>
       <td>S</td>
-      <td>0</td>
+      <td>Survived</td>
+      <td>Lower Class</td>
+      <td>No</td>
     </tr>
     <tr>
       <th>3</th>
@@ -1566,7 +1819,9 @@ titanic_fare.head()
       <td>0</td>
       <td>53.1000</td>
       <td>S</td>
-      <td>1</td>
+      <td>Survived</td>
+      <td>Upper Class</td>
+      <td>Yes</td>
     </tr>
     <tr>
       <th>4</th>
@@ -1580,7 +1835,9 @@ titanic_fare.head()
       <td>0</td>
       <td>8.0500</td>
       <td>S</td>
-      <td>0</td>
+      <td>Died</td>
+      <td>Lower Class</td>
+      <td>No</td>
     </tr>
   </tbody>
 </table>
@@ -1593,9 +1850,9 @@ titanic_fare.head()
 #Calculate the survival rate for passenger who holds fare > $35. 
 #float() was used to forced a decimal result due to the limitation of python 2
 
-high_fare_survival=titanic_fare.loc[(titanic_fare['Survived'] == 1)&(titanic_fare['Fare>35']==1)]
+high_fare_survival=titanic_fare.loc[(titanic_fare['Survived'] == 1)&(titanic_fare['Fare>35']=='Yes')]
 
-high_fare_holder=titanic_fare.loc[(titanic_fare['Fare>35']==1)]
+high_fare_holder=titanic_fare.loc[(titanic_fare['Fare>35']=='Yes')]
 
 high_fare_survival_rate=len(high_fare_survival)/float(len(high_fare_holder))
 
@@ -1609,9 +1866,9 @@ print high_fare_survival_rate
 ```python
 #Calculate the survival rate for passenger who holds fare <= $35. 
 
-low_fare_survival=titanic_fare.loc[(titanic_fare['Survived'] == 1)&(titanic_fare['Fare>35']==0)]
+low_fare_survival=titanic_fare.loc[(titanic_fare['Survived'] == 1)&(titanic_fare['Fare>35']=='No')]
 
-low_fare_holder=titanic_fare.loc[(titanic_fare['Fare>35']==0)]
+low_fare_holder=titanic_fare.loc[(titanic_fare['Fare>35']=='No')]
 
 low_fare_survival_rate=len(low_fare_survival)/float(len(low_fare_holder))
 
@@ -1625,29 +1882,29 @@ print low_fare_survival_rate
 ```python
 #plot a barplot for survival rate for fare price > $35 and <= $35
 
-fare_survival_table=pd.DataFrame({'Fare Price':pd.Categorical(['<=$35','>$35']),
+fare_survival_table=pd.DataFrame({'Fare Price':pd.Categorical(['No','Yes']),
                                  'Survival Rate':pd.Series([0.32,0.62], dtype='float64')
                                  })
 bar=fare_survival_table.plot(kind='bar', x='Fare Price', rot=0)
 plt.ylabel('Survival Rate')
-plt.xlabel('Fare Price')
+plt.xlabel('Fare>35')
 plt.title('Fare price and survival rate')
 ```
 
 
 
 
-    <matplotlib.text.Text at 0x114ee1810>
+    <matplotlib.text.Text at 0x114fc5bd0>
 
 
 
 
-![png](/images/Titanic_Investigation_files/Titanic_Investigation_30_1.png)
+![png](/images/Titanic_Investigation_files/Titanic_Investigation_33_1.png)
 
 
 The bar plot using matplotlib.pyplot does a reasonable job of showing the difference in survival rate between the two groups. 
 
-However with seaborn.barplot(), confidence intervals are directly calculated and displayed.
+However with seaborn.barplot(), confidence intervals are directly calculated and displayed. This is an advantage of seaborn library. 
 
 
 ```python
@@ -1655,24 +1912,27 @@ However with seaborn.barplot(), confidence intervals are directly calculated and
 
 sns.barplot(x='Fare>35',y='Survived',data=titanic_fare, palette="Blues_d")
 plt.title('Fare price and survival rate')
+plt.ylabel('Survival Rate')
 ```
 
 
 
 
-    <matplotlib.text.Text at 0x114fb3390>
+    <matplotlib.text.Text at 0x114e91b90>
 
 
 
 
-![png](/images/Titanic_Investigation_files/Titanic_Investigation_32_1.png)
+![png](/images/Titanic_Investigation_files/Titanic_Investigation_35_1.png)
 
 
 As seen from the graph, taking into account of confidence intervals, higher fare group is associated with significantly higher survival rate (~0.62) compared to lower fare group (~0.31). 
 
 How about if we just look at fare price as the continuous variable in relation to survival outcome?
 
-Seaborn.lmplot() allows us to graph the logistic regression function using fare price as an estimator for survival, the function displays a sigmoid shape and higher fare price is indeed associated with the better chance of survival. 
+When the Y variable is binary like survival outcome in this case, the statistical analysis suitable is "logistic Regression", where x variable is used as an estimator for the binary outcome of Y variable. 
+
+Fortunately, Seaborn.lmplot() allows us to graph the logistic regression function using fare price as an estimator for survival, the function displays a sigmoid shape and higher fare price is indeed associated with the better chance of survival. 
 
 Note: the area around the line shows the confidence interval of the function.
 
@@ -1682,21 +1942,40 @@ Note: the area around the line shows the confidence interval of the function.
 sns.lmplot(x="Fare", y="Survived", data=titanic_fare,
            logistic=True, y_jitter=.03)
 plt.title('Logistic regression using fare price as estimator for survival outcome')
+plt.yticks([0, 1], ['Died', 'Survived'])
 ```
 
 
 
 
-    <matplotlib.text.Text at 0x114a29190>
+    ([<matplotlib.axis.YTick at 0x11527fc10>,
+      <matplotlib.axis.YTick at 0x11519aa90>],
+     <a list of 2 Text yticklabel objects>)
 
 
 
 
-![png](/images/Titanic_Investigation_files/Titanic_Investigation_34_1.png)
+![png](/images/Titanic_Investigation_files/Titanic_Investigation_37_1.png)
 
 
 
-### Gender and/images/ Survival 
+```python
+fare_bins = np.arange(0,500,10)
+sns.distplot(titanic_cleaned.loc[(titanic_cleaned['Survived']==0) & (titanic_cleaned['Fare']),'Fare'], bins=fare_bins)
+sns.distplot(titanic_cleaned.loc[(titanic_cleaned['Survived']==1) & (titanic_cleaned['Fare']),'Fare'], bins=fare_bins)
+plt.title('fare distribution among survival classes')
+plt.ylabel('frequency')
+plt.legend(['did not survive', 'survived']);
+```
+
+
+![png](/images/Titanic_Investigation_files/Titanic_Investigation_38_0.png)
+
+
+The fare distribution between survivors and non-survivors shows that there is peak in mortality for low fare price. 
+
+
+### Gender and Survival 
 ---
 For this section, I am interested in investigation gender and survival rate. I will first calculate the survival rate for both female and male. Then plot a few graphs to visualize the relationship between gender and survival, and combine with other factors such as fare price and socioeconomic class. 
 
@@ -1712,9 +1991,6 @@ female_survival_rate=len(female_survived)/(len(female_total)*1.00)
 print female_survival_rate
 ```
 
-    0.752895752896
-
-
 
 ```python
 #Calculate the survival rate for male
@@ -1727,63 +2003,30 @@ male_survival_rate=len(male_survived)/(len(male_total)*1.00)
 print male_survival_rate
 ```
 
-    0.205298013245
-
-
 
 ```python
 #plot a barplot for survival rate for female and male
 #we can see that seaborn.barplot 
 sns.barplot(x='Sex',y='Survived',data=titanic_fare)
 plt.title('Gender and survival rate')
+plt.ylabel('Survival Rate')
 ```
-
-
-
-
-    <matplotlib.text.Text at 0x115804d50>
-
-
-
-
-![png](/images/Titanic_Investigation_files/Titanic_Investigation_38_1.png)
-
 
 
 ```python
 ##plot a barplot for survival rate for female and male, combine with fare price group
 sns.barplot(x='Sex',y='Survived', hue='Fare>35',data=titanic_fare)
 plt.title('Gender and survival rate')
+plt.ylabel('Survival Rate')
 ```
-
-
-
-
-    <matplotlib.text.Text at 0x1159a15d0>
-
-
-
-
-![png](/images/Titanic_Investigation_files/Titanic_Investigation_39_1.png)
-
 
 
 ```python
 #plot a barplot for survival rate for female and male, combine with socioeconomic class
-sns.barplot(x='Sex',y='Survived', hue='Pclass',data=titanic_fare)
+sns.barplot(x='Sex',y='Survived', hue='Class',data=titanic_fare)
 plt.title('Socioeconomic class and survival rate')
+plt.ylabel('Survival Rate')
 ```
-
-
-
-
-    <matplotlib.text.Text at 0x115b20a50>
-
-
-
-
-![png](/images/Titanic_Investigation_files/Titanic_Investigation_40_1.png)
-
 
 Therefore, being a female is associated with significantly higher survival rate compared to male. 
 
@@ -1835,123 +2078,6 @@ titanic_age['Age Group'] = ageGroup_column
 titanic_age.head()
 ```
 
-
-
-
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>PassengerId</th>
-      <th>Survived</th>
-      <th>Pclass</th>
-      <th>Name</th>
-      <th>Sex</th>
-      <th>Age</th>
-      <th>SibSp</th>
-      <th>Parch</th>
-      <th>Fare</th>
-      <th>Embarked</th>
-      <th>Fare&gt;35</th>
-      <th>Age Group</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>0</td>
-      <td>3</td>
-      <td>Braund, Mr. Owen Harris</td>
-      <td>male</td>
-      <td>22.0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>7.2500</td>
-      <td>S</td>
-      <td>0</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>1</td>
-      <td>1</td>
-      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
-      <td>female</td>
-      <td>38.0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>71.2833</td>
-      <td>C</td>
-      <td>1</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>1</td>
-      <td>3</td>
-      <td>Heikkinen, Miss. Laina</td>
-      <td>female</td>
-      <td>26.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>7.9250</td>
-      <td>S</td>
-      <td>0</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>1</td>
-      <td>1</td>
-      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
-      <td>female</td>
-      <td>35.0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>53.1000</td>
-      <td>S</td>
-      <td>1</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>0</td>
-      <td>3</td>
-      <td>Allen, Mr. William Henry</td>
-      <td>male</td>
-      <td>35.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>8.0500</td>
-      <td>S</td>
-      <td>0</td>
-      <td>4</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
 Now, we want to plot a bar graph showing the relationship between age group and survival rate. Age group is used here instead of age because visually age group is easier to observe than using age variable when dealing with survival rate. 
 
 
@@ -1959,18 +2085,15 @@ Now, we want to plot a bar graph showing the relationship between age group and 
 #Seaborn.barplot is used to plot a bargraph and confidence intervals for survival rate
 sns.barplot(x='Age Group', y='Survived',data=titanic_age)
 plt.title('Age group and survival rate')
+plt.ylabel('Survival Rate')
 ```
 
-
-
-
-    <matplotlib.text.Text at 0x115cd0150>
-
-
-
-
-![png](/images/Titanic_Investigation_files/Titanic_Investigation_46_1.png)
-
+- Age Group 1: < 10
+- Age Group 2: >= 10 and < 20 
+- Age Group 3: >= 20 and < 30
+- Age Group 4: >= 30 and < 40
+- Age Group 5: >= 40 and < 50
+- Age Group 6: >= 50  
 
 
 ```python
@@ -1980,22 +2103,13 @@ fig = plt.figure(figsize=(10,5))
 ax1 = fig.add_subplot(121)
 sns.barplot(x='Age Group', y='Survived', hue='Sex',data=titanic_age)
 plt.title('Age group, gender and survival rate')
+plt.ylabel('Survival Rate')
 
 ax1 = fig.add_subplot(122)
 sns.barplot(x='Age Group', y='Survived',hue='Pclass',data=titanic_age)
 plt.title('Age group, class and survival rate')
+plt.ylabel('Survival Rate')
 ```
-
-
-
-
-    <matplotlib.text.Text at 0x116028b50>
-
-
-
-
-![png](/images/Titanic_Investigation_files/Titanic_Investigation_47_1.png)
-
 
 - Age Group 1: < 10
 - Age Group 2: >= 10 and < 20 
@@ -2015,20 +2129,26 @@ How about using age instead of age group. Is there a linear relationship between
 sns.lmplot(x="Age", y="Survived", data=titanic_age,
            logistic=True, y_jitter=.03)
 plt.title('Logistic regression using age as the estimator for survival outcome')
+plt.yticks([0, 1], ['Died', 'Survived'])
+```
+
+From the graph, we can see there is a negative linear relationship between age and survival outcome.
+
+
+```python
+fare_bins = np.arange(0,100,2)
+sns.distplot(titanic_cleaned.loc[(titanic_cleaned['Survived']==0) & (titanic_cleaned['Age']),'Age'], bins=fare_bins)
+sns.distplot(titanic_cleaned.loc[(titanic_cleaned['Survived']==1) & (titanic_cleaned['Age']),'Age'], bins=fare_bins)
+plt.title('age distribution among survival classes')
+plt.ylabel('frequency')
+plt.legend(['did not survive', 'survived']);
 ```
 
 
+![png](/images/Titanic_Investigation_files/Titanic_Investigation_58_0.png)
 
 
-    <matplotlib.text.Text at 0x1162dcfd0>
-
-
-
-
-![png](/images/Titanic_Investigation_files/Titanic_Investigation_50_1.png)
-
-
-From the graph, we can see there is a negative linear relationship between age and survival outcome.
+The age distribution comparison between survivors and non-survivors confirmed the survival spike in young children. 
 
 ### Limitations 
 ---
@@ -2045,21 +2165,6 @@ There are limitations on our analysis:
 
 print titanic_original.apply(lambda x: sum(x.isnull().values), axis = 0) 
 ```
-
-    PassengerId      0
-    Survived         0
-    Pclass           0
-    Name             0
-    Sex              0
-    Age            177
-    SibSp            0
-    Parch            0
-    Ticket           0
-    Fare             0
-    Cabin          687
-    Embarked         2
-    dtype: int64
-
 
 The table shows the number of missing data in the data set, which is an important factor when considering the limitations of the analysis.
 
