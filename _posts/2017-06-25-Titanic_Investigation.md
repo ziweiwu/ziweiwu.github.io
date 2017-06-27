@@ -6,7 +6,7 @@ comments: true
 keywords: "data science, data analysis, python, pandas, seaborn"
 ---
 For this project, I want to investigate the unfortunate tragedy of the sinking of the Titanic. The movie "Titanic"- which I watched when I was still a child left a strong memory for me. The event occurred in the early morning of 15 April 1912, when the ship collided with an iceberg, and out of 2,224 passengers, more than 1500 died. 
-![Image of Titantic](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/RMS_Titanic_3.jpg/1024px-RMS_Titanic_3.jpg)
+![Image of Titantic](https://cl.ly/432D2u133p1V/Titanic_investigation_intro.jpg)
 
 The dataset I am working with contains the demographic information, and other information including ticket class, cabin number, fare price of 891 passengers. The main question I am curious about: What are the factors that correlate with the survival outcome of passengers?
 
