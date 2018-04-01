@@ -12,7 +12,7 @@ Given [0,1,0,2,1,0,1,3,2,1,2,1], return 6.
 
 ![](https://leetcode.com/static/images/problemset/rainwatertrap.png)
 
-Thought Process: The water can only be contained as tall as the shorter side of wall. So We can scan the array from both right and left, and maintain a mininum height. Add height difference between either left height and right height with the mininum height.
+Thought Process: The water can only be contained as tall as the shorter side of wall. So We can scan the array from both right and left, and maintain a mininum height. Add height difference between either left height and right height with the mininum height to the area.
 ```cpp
 class Solution {
 public:
