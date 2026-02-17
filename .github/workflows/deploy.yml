@@ -29,6 +29,8 @@ jobs:
         run: npm ci
       - name: Build Astro
         run: npm run build
+      - name: Run tests
+        run: npx vitest run
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

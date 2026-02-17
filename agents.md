@@ -13,6 +13,7 @@ Personal blog for Ziwei Wu, hosted at https://ziweiwu.github.io. Built with Astr
 - **Styling:** Plain CSS in `src/styles/global.css` (no Tailwind, no CSS framework)
 - **Fonts:** "Helvetica Neue", Helvetica, Arial, sans-serif (body); DejaVu Sans Mono (code)
 - **Deployment:** GitHub Actions → GitHub Pages (workflow in `.github/workflows/deploy.yml`)
+- **Testing:** Vitest + Cheerio (tests run against built `dist/` output, no browser needed)
 - **Package manager:** npm
 
 ## Project Structure
@@ -29,6 +30,14 @@ src/
 public/
   fonts/            # DejaVu Sans Mono woff files
   images/           # All blog images stored locally (no external image URLs)
+tests/
+  build.test.ts           # dist/ exists, all pages generated, static assets copied
+  content.test.ts         # Frontmatter validation, non-empty body on all posts
+  html-structure.test.ts  # Meta tags, SEO, nav links, year grouping, post structure
+  images.test.ts          # Every image ref in markdown resolves to a file in public/
+  rss.test.ts             # Valid XML, correct title/link, all posts have items
+  links.test.ts           # All internal <a href> in built HTML resolve to real files
+vitest.config.ts          # Vitest configuration
 ```
 
 ## Commands
@@ -36,6 +45,8 @@ public/
 - `npm run dev` — Start dev server (localhost:4321)
 - `npm run build` — Build static site to `dist/`
 - `npm run preview` — Preview built site locally
+- `npm test` — Build and run all tests (use for CI and verification)
+- `npm run test:only` — Run tests against existing `dist/` (skip rebuild)
 
 ## Blog Post Format
 
@@ -78,6 +89,23 @@ The content collection schema is defined in `src/content.config.ts`. The `pubDat
 | `src/content.config.ts` | Zod schema for blog post frontmatter |
 | `astro.config.mjs` | Astro config (site URL, MDX, sitemap integrations) |
 | `.github/workflows/deploy.yml` | GitHub Actions deployment workflow |
+
+## Testing
+
+Tests run against the built `dist/` output using Vitest and Cheerio (no Playwright/browser needed since the site has zero client-side JS).
+
+- `npm test` — full build + test suite (use for CI and before committing)
+- `npm run test:only` — run tests against existing `dist/` (skip rebuild, faster iteration)
+
+**Test coverage:**
+- **build** — dist/ exists, all pages generated, static assets (favicon, fonts, sitemap) copied
+- **content** — every markdown post has valid frontmatter (title, description, pubDate) and non-empty body
+- **html-structure** — meta tags, OG tags, nav links, year-grouped headings, post page structure
+- **images** — every image reference in markdown resolves to a local file in `public/`
+- **rss** — valid XML, correct channel title/link, all posts present with required fields
+- **links** — every internal `<a href>` in built HTML resolves to a real file in `dist/`
+
+**CI integration:** Tests run in GitHub Actions between the build and deploy steps. If any test fails, deployment is blocked. See `.github/workflows/deploy.yml`.
 
 ## Things to Avoid
 
